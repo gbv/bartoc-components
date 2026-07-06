@@ -24,6 +24,7 @@
     "dev": "vite",
     "build": "vite build",
     "prepack": "npm run build",
+    "prepare": "npm run build",
     "preview": "vite preview"
   },
   "peerDependencies": {
