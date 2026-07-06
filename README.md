@@ -9,7 +9,7 @@ includes a small Vite demo app for local development and visual checks.
 ## Installation
 
 ```sh
-npm install @gbv/bartoc-components
+npm install github:gbv/bartoc-components
 ```
 
 Vue 3 is a peer dependency; consuming applications provide it:
