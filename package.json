@@ -1,7 +1,7 @@
 {
   "name": "@gbv/bartoc-components",
   "version": "0.1.0",
-  "description": "Shared Vue footer component, design tokens, and CSS utilities for BARTOC applications.",
+  "description": "Shared Vue components, design tokens, and CSS utilities for BARTOC applications.",
   "type": "module",
   "license": "MIT",
   "files": [

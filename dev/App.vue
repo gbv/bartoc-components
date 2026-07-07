@@ -1,13 +1,36 @@
-<script setup>
-import { BartocFooter } from "../src/index.js"
+<template>
+  <div class="demo-app">
+    <main class="app-container demo-main">
+      <section class="demo-search">
+        <BartocSearchBar />
+      </section>
+    </main>
 
-const externalLinks = [
+    <BartocFooter
+      api-url="/api/"
+      download-url="/download"
+      :external-links="footerExternalLinks"
+      :resource-format-links="footerResourceFormatLinks"
+      :search-status-links="footerSearchStatusLinks"
+    >
+      <template #search-status>
+        search in <b>123</b> terminologies
+        (as of <b>2026-07-06</b>, live updates <b>enabled</b>)
+      </template>
+    </BartocFooter>
+  </div>
+</template>
+
+<script setup>
+import { BartocFooter, BartocSearchBar } from "../src/index.js"
+
+const footerExternalLinks = [
   { href: "https://code4lib.social/@bartoc", label: "Mastodon", rel: "me" },
   { href: "https://github.com/gbv/bartoc.org", label: "sources" },
   { href: "https://github.com/gbv/bartoc.org/issues", label: "issues" },
 ]
 
-const resourceFormatLinks = [
+const footerResourceFormatLinks = [
   {
     href: "/api/data?uri=https%3A%2F%2Fbartoc.org%2Fen%2Fnode%2F18785",
     label: "JSON",
@@ -22,32 +45,11 @@ const resourceFormatLinks = [
   },
 ]
 
-const searchStatusLinks = [
+const footerSearchStatusLinks = [
   { href: "/api/status", label: "Search API" },
   { href: "https://github.com/gbv/bartoc-search", label: "sources" },
 ]
 </script>
-
-<template>
-  <div class="demo-app">
-    <main class="app-container demo-main">
-      <h1>BARTOC footer</h1>
-    </main>
-
-    <BartocFooter
-      api-url="/api/"
-      download-url="/download"
-      :external-links="externalLinks"
-      :resource-format-links="resourceFormatLinks"
-      :search-status-links="searchStatusLinks"
-    >
-      <template #search-status>
-        search in <b>123</b> terminologies
-        (as of <b>2026-07-06</b>, live updates <b>enabled</b>)
-      </template>
-    </BartocFooter>
-  </div>
-</template>
 
 <style scoped>
 :global(body) {
@@ -65,16 +67,12 @@ const searchStatusLinks = [
 
 .demo-main {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding-block: var(--cc-space-xl);
 }
 
-.demo-main h1 {
-  margin: 0;
-  color: var(--cc-color-muted);
-  font-size: 1.5rem;
-  font-weight: var(--cc-font-weight-regular);
-  line-height: 1.2;
+.demo-search {
+  width: min(100%, 48rem);
 }
 </style>
