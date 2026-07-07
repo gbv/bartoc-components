@@ -67,12 +67,13 @@ const footerSearchStatusLinks = [
 
 .demo-main {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding-block: var(--cc-space-xl);
 }
 
 .demo-search {
   width: min(100%, 48rem);
+  text-align: center;
 }
 </style>
