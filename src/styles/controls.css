@@ -48,6 +48,25 @@
   cursor: not-allowed;
 }
 
+.cc-button-sm {
+  min-height: calc(1.5em + 0.5rem + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: var(--cc-font-size-sm);
+  line-height: 1.5;
+}
+
+.cc-button-icon {
+  width: calc(1.5em + 0.75rem + 2px);
+  min-width: calc(1.5em + 0.75rem + 2px);
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.cc-button-sm.cc-button-icon {
+  width: calc(1.5em + 0.5rem + 2px);
+  min-width: calc(1.5em + 0.5rem + 2px);
+}
+
 .cc-button-primary {
   border-color: var(--cc-color-primary);
   background: var(--cc-color-primary);

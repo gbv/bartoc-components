@@ -81,6 +81,8 @@ Button semantics:
 | `cc-button-ghost` | Low-emphasis filters or inactive toggles. |
 | `cc-button-selected` | Selected/toggled state. |
 | `cc-button-on-primary` | Action placed on a primary-colored surface, such as the header. |
+| `cc-button-sm` | Compact button size for dense UI such as badges, filters, or row actions. |
+| `cc-button-icon` | Square icon-only button. Use with an accessible label such as `aria-label`. |
 
 
 ## Components
