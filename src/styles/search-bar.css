@@ -3,7 +3,13 @@
   --bartoc-search-bar-input-min-width: 22rem;
   --bartoc-search-bar-field-width: 10rem;
   --bartoc-search-bar-field-min-width: 9rem;
-  --bartoc-search-bar-submit-min-width: 5.5rem;
+  /*
+ * The submit button should inherit the shared .cc-button sizing by default:
+ * natural text width plus shared padding. Host apps can opt into a fixed
+ * minimum width by overriding this variable.
+ */
+
+  --bartoc-search-bar-submit-min-width: auto;
 
   box-sizing: border-box;
   display: inline-block;
