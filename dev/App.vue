@@ -1,5 +1,23 @@
 <template>
   <div class="demo-app">
+    <BartocHeader
+      site-name="BARTOC.org"
+      home-url="/"
+      :logo-url="demoLogoUrl"
+      logo-alt="BARTOC"
+      :print-logo-url="demoPrintLogoUrl"
+      :nav-links="headerNavLinks"
+      :utility-links="headerUtilityLinks"
+      :active-path="activePath"
+      :user-can-add="true"
+      edit-url="/edit"
+      add-label="add"
+    >
+      <template #user-status>
+        <a href="/login">Login</a>
+      </template>
+    </BartocHeader>
+
     <main class="app-container demo-main">
       <section class="demo-search">
         <BartocSearchBar />
@@ -22,7 +40,26 @@
 </template>
 
 <script setup>
-import { BartocFooter, BartocSearchBar } from "../src/index.js"
+import { BartocFooter, BartocHeader, BartocSearchBar } from "../src/index.js"
+import demoLogoUrl from "./assets/bartoc-logo-new.png"
+
+const demoPrintLogoUrl = svgDataUrl(`
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="72" viewBox="0 0 250 72">
+  <text x="0" y="51" fill="#212121" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">BARTOC</text>
+</svg>
+`)
+
+const headerNavLinks = [
+  { href: "/about", label: "About" },
+  { href: "/vocabularies", label: "Terminologies" },
+  { href: "/registries", label: "Registries" },
+  { href: "/software", label: "Software" },
+  { href: "/stats", label: "Statistics" },
+]
+
+const headerUtilityLinks = [{ href: "/contact", label: "Contact & Editors" }]
+
+const activePath = window.location.pathname
 
 const footerExternalLinks = [
   { href: "https://code4lib.social/@bartoc", label: "Mastodon", rel: "me" },
@@ -49,6 +86,10 @@ const footerSearchStatusLinks = [
   { href: "/api/status", label: "Search API" },
   { href: "https://github.com/gbv/bartoc-search", label: "sources" },
 ]
+
+function svgDataUrl(svg) {
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`
+}
 </script>
 
 <style scoped>
@@ -60,14 +101,15 @@ const footerSearchStatusLinks = [
 }
 
 .demo-app {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  grid-template-rows: 1fr auto;
 }
 
 .demo-main {
   display: flex;
   align-items: center;
+  flex: 1 0 auto;
   justify-content: center;
   padding-block: var(--cc-space-xl);
 }

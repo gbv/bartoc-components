@@ -25,7 +25,11 @@ Vue 3 is a peer dependency; consuming applications provide it:
 ## Usage
 
 ```js
-import { BartocFooter, BartocSearchBar } from "@gbv/bartoc-components"
+import {
+  BartocFooter,
+  BartocHeader,
+  BartocSearchBar,
+} from "@gbv/bartoc-components"
 
 import "@gbv/bartoc-components/style.css"
 ```
@@ -34,6 +38,11 @@ import "@gbv/bartoc-components/style.css"
 ## CSS Approach
 
 The `--cc-*` custom properties define semantic design tokens shared across BARTOC and the coli-conc application family. They cover colors, font sizes, spacing, radii, borders, and list/table row rhythm.
+
+Component classes use a pragmatic BEM style. Block names start with
+`bartoc-*`, for example `bartoc-header` or `bartoc-search-bar`. Elements use
+`__`, for example `bartoc-header__nav-link`. Modifiers use `--`, but only when
+they are styled or part of a consumer contract.
 
 Color tokens:
 
@@ -87,6 +96,29 @@ Button semantics:
 
 ## Components
 
+### BartocHeader
+
+`BartocHeader` provides shared BARTOC header presentation without depending on
+Bootstrap. The host application still owns login state, authorization checks,
+environment-specific edit URLs, and route/menu data.
+
+```vue
+<BartocHeader
+  logo-url="/img/bartoc-logo-new.png"
+  :nav-links="navLinks"
+  :utility-links="utilityLinks"
+  :user-can-add="userCanAdd"
+  edit-url="/edit"
+>
+  <template #user-status>
+    <UserStatus redirect />
+  </template>
+</BartocHeader>
+```
+
+See [BartocHeader documentation](docs/components/BartocHeader.md) for props,
+slots, link objects, and host integration notes.
+
 ### BartocSearchBar
 
 `BartocSearchBar` provides shared terminology search form presentation. The
@@ -126,11 +158,11 @@ slots, link objects, and contextual examples.
 ## CSS Contract
 
 Importing `@gbv/bartoc-components/style.css` provides the shared `--cc-*`
-design tokens, `app-container`, print helpers, form/button controls, search bar
-classes, and footer classes.
+design tokens, `app-container`, print helpers, form/button controls, header
+classes, search bar classes, and footer classes.
 
 Styles are scoped to component classes such as `bartoc-search-bar` and
-`bartoc-footer`, so the package CSS should not reset the host application's
+`bartoc-header`, so the package CSS should not reset the host application's
 global body or link styles.
 
 ## Development

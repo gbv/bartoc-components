@@ -51,6 +51,11 @@
   --cc-shadow-md: 0 2px 6px color-mix(in srgb, var(--cc-color-text) 8%, transparent);
   --cc-shadow-lg: 0 10px 30px color-mix(in srgb, var(--cc-color-text) 25%, transparent);
 
+  /* Header-specific extension. */
+  --cc-header-background: var(--cc-color-primary);
+  --cc-header-color: var(--cc-color-on-primary);
+  --cc-header-logo-height: var(--cc-space-xxl);
+
   /* Footer-specific extension. */
   --cc-footer-background: var(--cc-color-text);
   --cc-footer-color: var(--cc-border-color-strong);
