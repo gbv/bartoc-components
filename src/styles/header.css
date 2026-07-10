@@ -101,19 +101,6 @@
   color: inherit;
 }
 
-.bartoc-header__user-status a {
-  color: inherit;
-  font-size: var(--cc-font-size-base);
-  font-weight: var(--cc-font-weight-light);
-  text-decoration: none;
-}
-
-.bartoc-header__user-status a:hover,
-.bartoc-header__user-status a:focus-visible {
-  color: inherit;
-  text-decoration: underline;
-}
-
 .bartoc-header__print {
   margin: 0;
   background: var(--cc-color-surface);
