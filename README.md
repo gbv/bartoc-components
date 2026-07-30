@@ -146,8 +146,7 @@ and URL construction.
 ```vue
 <BartocFooter
   site-name="BARTOC.org"
-  api-url="/api/"
-  download-url="/download"
+  :internal-links="internalLinks"
   :external-links="externalLinks"
 />
 ```
@@ -170,8 +169,11 @@ global body or link styles.
 ```sh
 npm install
 npm run dev
-npm run build
+npm run check
 ```
 
 The development server renders the demo app from `dev/App.vue`. The production
 build emits the library files and package CSS in `dist/`.
+
+See [RELEASING.md](RELEASING.md) for the release process and
+[CHANGELOG.md](CHANGELOG.md) for breaking changes and migration notes.

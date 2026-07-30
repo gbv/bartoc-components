@@ -11,8 +11,7 @@
       :active-path="activePath"
       :user-can-add="true"
       edit-url="/edit"
-      add-label="add"
-    >
+      add-label="add">
       <template #user-status>
         <a href="/login">Login</a>
       </template>
@@ -25,12 +24,10 @@
     </main>
 
     <BartocFooter
-      api-url="/api/"
-      download-url="/download"
       :external-links="footerExternalLinks"
+      :internal-links="footerInternalLinks"
       :resource-format-links="footerResourceFormatLinks"
-      :search-status-links="footerSearchStatusLinks"
-    >
+      :search-status-links="footerSearchStatusLinks">
       <template #search-status>
         search in <b>123</b> terminologies
         (as of <b>2026-07-06</b>, live updates <b>enabled</b>)
@@ -65,6 +62,12 @@ const footerExternalLinks = [
   { href: "https://code4lib.social/@bartoc", label: "Mastodon", rel: "me" },
   { href: "https://github.com/gbv/bartoc.org", label: "sources" },
   { href: "https://github.com/gbv/bartoc.org/issues", label: "issues" },
+]
+
+const footerInternalLinks = [
+  { href: "/api", label: "API" },
+  { href: "/download", label: "download" },
+  { href: "/sparql", label: "SPARQL" },
 ]
 
 const footerResourceFormatLinks = [

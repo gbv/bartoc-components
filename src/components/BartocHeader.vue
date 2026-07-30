@@ -3,13 +3,14 @@
     <div class="app-container bartoc-header__container noprint">
       <div>
         <slot name="logo">
-          <a class="bartoc-header__logo-link" :href="homeUrl">
+          <a
+            class="bartoc-header__logo-link"
+            :href="homeUrl">
             <img
               v-if="logoUrl"
               :src="logoUrl"
               :alt="logoAltText"
-              class="bartoc-header__logo-image"
-            >
+              class="bartoc-header__logo-image">
             <span v-else>{{ siteName }}</span>
           </a>
         </slot>
@@ -19,18 +20,18 @@
         <nav
           v-if="navLinks.length || $slots['nav-left']"
           class="bartoc-header__nav-left"
-          :aria-label="navLabel"
-        >
+          :aria-label="navLabel">
           <slot name="nav-left">
             <ul class="bartoc-header__nav-list">
-              <li v-for="link in navLinks" :key="linkKey(link)">
+              <li
+                v-for="link in navLinks"
+                :key="linkKey(link)">
                 <a
                   :class="linkClass(link)"
                   :href="link.href"
                   :target="link.target"
                   :rel="linkRel(link)"
-                  :aria-current="ariaCurrent(link)"
-                >
+                  :aria-current="ariaCurrent(link)">
                   {{ link.label }}
                 </a>
               </li>
@@ -41,56 +42,62 @@
         <div
           v-if="
             utilityLinks.length ||
-            userCanAdd ||
-            $slots['nav-right'] ||
-            $slots['user-status'] ||
-            $slots.actions
+              userCanAdd ||
+              $slots['nav-right'] ||
+              $slots['user-status'] ||
+              $slots.actions
           "
-          class="bartoc-header__nav-right"
-        >
+          class="bartoc-header__nav-right">
           <slot name="nav-right">
-            <nav v-if="utilityLinks.length" :aria-label="utilityNavLabel">
+            <nav
+              v-if="utilityLinks.length"
+              :aria-label="utilityNavLabel">
               <ul class="bartoc-header__nav-list">
-                <li v-for="link in utilityLinks" :key="linkKey(link)">
+                <li
+                  v-for="link in utilityLinks"
+                  :key="linkKey(link)">
                   <a
                     :class="linkClass(link)"
                     :href="link.href"
                     :target="link.target"
                     :rel="linkRel(link)"
-                    :aria-current="ariaCurrent(link)"
-                  >
+                    :aria-current="ariaCurrent(link)">
                     {{ link.label }}
                   </a>
                 </li>
               </ul>
             </nav>
 
-            <div v-if="$slots['user-status']" class="bartoc-header__user-status">
-              <slot name="user-status"></slot>
+            <div
+              v-if="$slots['user-status']"
+              class="bartoc-header__user-status">
+              <slot name="user-status" />
             </div>
 
             <a
               v-if="userCanAdd"
               class="cc-button cc-button-on-primary cc-button-sm"
-              :href="editUrl"
-            >
+              :href="editUrl">
               {{ addLabel }}
             </a>
 
-            <slot name="actions"></slot>
+            <slot name="actions" />
           </slot>
         </div>
       </div>
     </div>
 
-    <div class="bartoc-header__print printonly" aria-hidden="true">
+    <div
+      class="bartoc-header__print printonly"
+      aria-hidden="true">
       <img
         v-if="printLogoUrl"
         :src="printLogoUrl"
         alt=""
-        class="bartoc-header__print-logo"
-      >
-      <slot name="print">{{ printText }}</slot>
+        class="bartoc-header__print-logo">
+      <slot name="print">
+        {{ printText }}
+      </slot>
     </div>
   </header>
 </template>

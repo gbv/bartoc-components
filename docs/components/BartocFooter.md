@@ -19,13 +19,18 @@ const externalLinks = [
   { href: "https://github.com/gbv/bartoc.org", label: "sources" },
   { href: "https://github.com/gbv/bartoc.org/issues", label: "issues" },
 ]
+
+const internalLinks = [
+  { href: "/api", label: "API" },
+  { href: "/download", label: "download" },
+  { href: "/sparql", label: "SPARQL" },
+]
 </script>
 
 <template>
   <BartocFooter
     site-name="BARTOC.org"
-    api-url="/api/"
-    download-url="/download"
+    :internal-links="internalLinks"
     :external-links="externalLinks"
   />
 </template>
@@ -38,8 +43,7 @@ Pass search status only where it belongs, for example on `/terminologies`:
 ```vue
 <BartocFooter
   site-name="BARTOC.org"
-  api-url="/api/"
-  download-url="/download"
+  :internal-links="internalLinks"
   :external-links="externalLinks"
   :search-status-links="searchStatusLinks"
 >
@@ -55,8 +59,7 @@ Pass resource format links only on pages with a current vocabulary or resource:
 ```vue
 <BartocFooter
   site-name="BARTOC.org"
-  api-url="/api/"
-  download-url="/download"
+  :internal-links="internalLinks"
   :external-links="externalLinks"
   :resource-format-links="resourceFormatLinks"
 />
@@ -66,17 +69,12 @@ Pass resource format links only on pages with a current vocabulary or resource:
 
 - `siteName` string, default `BARTOC.org`: displayed site instance, for example
   `BARTOC.org` or `BARTOC.org (dev)`.
-- `apiUrl` string, default empty: environment-dependent API URL. When set, it
-  is rendered in the global footer links.
-- `apiLabel` string, default `API`.
-- `downloadUrl` string, default empty: environment-dependent download URL. When
-  set, it is rendered in the legal sentence and global footer links.
-- `downloadLabel` string, default `download`.
 - `licenseLabel` string, default `PDDL 1.0`.
 - `licenseUrl` string, default
   `http://www.opendatacommons.org/licenses/pddl/1.0/`.
 - `externalLinks` array, default empty: off-site links such as Mastodon,
   sources, and issues.
+- `internalLinks` array, default empty: in-site links such as API, download page and sparql endpoint.
 - `searchStatus` string, default empty: plain-text search status. Use the
   `search-status` slot when markup is needed.
 - `searchStatusLinks` array, default empty: links shown next to search status,

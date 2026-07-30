@@ -1,17 +1,20 @@
 <template>
   <div class="bartoc-search-bar">
     <!-- Host applications can use this for page context such as result counts. -->
-    <div v-if="$slots.summary" class="bartoc-search-bar__summary">
-      <slot name="summary"></slot>
+    <div
+      v-if="$slots.summary"
+      class="bartoc-search-bar__summary">
+      <slot name="summary" />
     </div>
 
     <form
       class="bartoc-search-bar__form"
       :aria-label="formLabel"
-      @submit.prevent="submitSearch"
-    >
+      @submit.prevent="submitSearch">
       <div class="bartoc-search-bar__controls">
-        <label class="cc-visually-hidden" :for="searchInputId">
+        <label
+          class="cc-visually-hidden"
+          :for="searchInputId">
           {{ inputLabel }}
         </label>
         <input
@@ -20,31 +23,29 @@
           type="search"
           class="cc-form-control bartoc-search-bar__input"
           :placeholder="placeholder"
-          @input="updateSearch"
-        >
+          @input="updateSearch">
 
-        <label class="cc-visually-hidden" :for="fieldInputId">
+        <label
+          class="cc-visually-hidden"
+          :for="fieldInputId">
           {{ fieldLabel }}
         </label>
         <select
           :id="fieldInputId"
           :value="fieldValue"
           class="cc-form-control bartoc-search-bar__field"
-          @change="updateField"
-        >
+          @change="updateField">
           <option
             v-for="searchField in fields"
             :key="`${searchField.value}-${searchField.label}`"
-            :value="searchField.value"
-          >
+            :value="searchField.value">
             {{ searchField.label }}
           </option>
         </select>
 
         <button
           type="submit"
-          class="cc-button cc-button-primary bartoc-search-bar__submit noprint"
-        >
+          class="cc-button cc-button-primary bartoc-search-bar__submit noprint">
           {{ submitLabel }}
         </button>
       </div>
