@@ -1,6 +1,6 @@
 {
   "name": "@gbv/bartoc-components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Shared Vue components, design tokens, and CSS utilities for BARTOC applications.",
   "type": "module",
   "license": "MIT",
