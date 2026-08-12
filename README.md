@@ -158,11 +158,49 @@ slots, link objects, and contextual examples.
 
 Importing `@gbv/bartoc-components/style.css` provides the shared `--cc-*`
 design tokens, `app-container`, print helpers, form/button controls, header
-classes, search bar classes, and footer classes.
+classes, search bar classes, table utilities, and footer classes.
 
 Styles are scoped to component classes such as `bartoc-search-bar` and
 `bartoc-header`, so the package CSS should not reset the host application's
 global body or link styles.
+
+### Tables
+
+Add `cc-table` to a native HTML table to apply shared width, spacing, text
+color, alignment, and collapsed-border behavior without depending on
+Bootstrap. The base table is intentionally borderless; add modifiers only for
+the behavior the table needs.
+
+| Class | Semantics |
+| --- | --- |
+| `cc-table` | Required borderless base class with the standard shared row padding. |
+| `cc-table--compact` | Reduces cell padding for dense editor interfaces. |
+| `cc-table--divided` | Adds cell/row dividers and a stronger, bottom-aligned header separator. |
+| `cc-table--hover` | Highlights body rows on hover while retaining the shared readable text color. |
+
+Modifiers are composable. For example, this compact table has visible
+dividers and hover feedback:
+
+```html
+<table class="cc-table cc-table--compact cc-table--divided cc-table--hover">
+  <thead>
+    <tr>
+      <th scope="col">Registry</th>
+      <th scope="col">Terminologies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">BARTOC</th>
+      <td>3,200</td>
+    </tr>
+    <tr>
+      <th scope="row">coli-conc</th>
+      <td>120</td>
+    </tr>
+  </tbody>
+</table>
+```
 
 ## Development
 
