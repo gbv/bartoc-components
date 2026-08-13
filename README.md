@@ -54,6 +54,9 @@ Color tokens:
 | `--cc-color-accent` | `#f1ecea` | Soft highlight, selected rows, action backgrounds. |
 | `--cc-color-danger` | `#dc3545` | Destructive actions and error-like states. |
 | `--cc-color-danger-hover` | `#bd2130` | Hover state for destructive actions. |
+| `--cc-color-warning` | `#856404` | Readable text for warning messages. |
+| `--cc-color-warning-surface` | `#fff3cd` | Warning message background. |
+| `--cc-color-warning-border` | `#ffeeba` | Warning message border. |
 | `--cc-color-text` | `#212121` | Main readable text. |
 | `--cc-color-muted` | `#6c757d` | Secondary text and low-emphasis UI. |
 | `--cc-color-link` | `#8b2406` | Standard link color. |
@@ -157,12 +160,47 @@ slots, link objects, and contextual examples.
 ## CSS Contract
 
 Importing `@gbv/bartoc-components/style.css` provides the shared `--cc-*`
-design tokens, `app-container`, print helpers, form/button controls, header
-classes, search bar classes, table utilities, and footer classes.
+design tokens, `app-container`, print helpers, form/button controls, message
+utilities, header classes, search bar classes, table utilities, and footer
+classes.
 
 Styles are scoped to component classes such as `bartoc-search-bar` and
 `bartoc-header`, so the package CSS should not reset the host application's
 global body or link styles.
+
+### Messages
+
+Message utilities provide Bootstrap-independent panels for neutral information,
+warnings, errors, and prominent messages.
+
+| Class | Semantics |
+| --- | --- |
+| `cc-message` | Required neutral base class with shared padding, border, surface, and text styles. |
+| `cc-message--warning` | Applies the warning border, surface, and readable warning text color. |
+| `cc-message--danger` | Applies the danger border and surface while retaining the normal readable text color. |
+| `cc-message--prominent` | Increases padding and font size for a higher-emphasis presentation. |
+
+The classes are visual only and do not imply `role="alert"`. Add alert semantics
+only when a message is urgent or dynamically inserted. Modifiers are composable;
+for example, a prominent error can combine the danger and prominent modifiers:
+
+```html
+<div class="cc-message">
+  Neutral information.
+</div>
+
+<div class="cc-message cc-message--warning">
+  Please review the entered metadata.
+</div>
+
+<p class="cc-message cc-message--danger" role="alert">
+  The editor could not be loaded.
+</p>
+
+<div class="cc-message cc-message--danger cc-message--prominent" role="alert">
+  Error: backend unavailable.
+</div>
+```
 
 ### Tables
 

@@ -11,6 +11,9 @@
   --cc-color-accent: #f1ecea;
   --cc-color-danger: #dc3545;
   --cc-color-danger-hover: #bd2130;
+  --cc-color-warning: #856404;
+  --cc-color-warning-surface: #fff3cd;
+  --cc-color-warning-border: #ffeeba;
   --cc-color-text: #212121;
   --cc-color-muted: #6c757d;
   --cc-color-link: #8b2406;

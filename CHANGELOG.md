@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Added
+
+- Added shared warning tokens and Bootstrap-independent `cc-message` utilities.
+
 ## 0.3.0 - 2026-08-12
 
 ### Added

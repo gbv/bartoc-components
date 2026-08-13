@@ -23,6 +23,32 @@
       </section>
 
       <section
+        class="demo-messages"
+        aria-labelledby="demo-messages-title">
+        <h1 id="demo-messages-title">
+          Shared message styles
+        </h1>
+
+        <div class="cc-message">
+          <p><strong>Neutral:</strong> The terminology record is up to date.</p>
+          <p>The final paragraph has no extra bottom margin.</p>
+        </div>
+
+        <div class="cc-message cc-message--warning">
+          <p><strong>Warning:</strong> Please review the entered metadata.</p>
+          <p>Two paragraphs make the nested spacing easy to compare.</p>
+        </div>
+
+        <div class="cc-message cc-message--danger">
+          <strong>Danger:</strong> The editor could not be loaded.
+        </div>
+
+        <div class="cc-message cc-message--danger cc-message--prominent">
+          <strong>Prominent danger:</strong> Backend unavailable.
+        </div>
+      </section>
+
+      <section
         class="demo-tables"
         aria-labelledby="demo-tables-title">
         <h1 id="demo-tables-title">
@@ -258,6 +284,15 @@ function svgDataUrl(svg) {
 
 .demo-search {
   width: min(100%, 48rem);
+  text-align: center;
+}
+
+.demo-messages {
+  width: min(100%, 48rem);
+}
+
+.demo-messages h1 {
+  margin-top: 0;
   text-align: center;
 }
 

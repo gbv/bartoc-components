@@ -1,0 +1,28 @@
+.cc-message {
+  padding: var(--cc-space-md);
+  margin-bottom: var(--cc-space-md);
+  border: 1px solid var(--cc-border-color);
+  border-radius: var(--cc-radius-sm);
+  background: var(--cc-color-surface-muted);
+  color: var(--cc-color-text);
+}
+
+.cc-message > :last-child {
+  margin-bottom: 0;
+}
+
+.cc-message--warning {
+  border-color: var(--cc-color-warning-border);
+  background: var(--cc-color-warning-surface);
+  color: var(--cc-color-warning);
+}
+
+.cc-message--danger {
+  border-color: var(--cc-color-danger-border);
+  background: var(--cc-color-danger-surface);
+}
+
+.cc-message--prominent {
+  padding: var(--cc-space-xl);
+  font-size: var(--cc-font-size-lg);
+}
