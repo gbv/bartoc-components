@@ -3,13 +3,13 @@
   width: 100%;
   min-height: 2.375rem;
   padding: 0.375rem 0.75rem;
-  border: 1px solid var(--cc-border-color-control);
+  border: var(--cc-border-width) solid var(--cc-border-color-control);
   border-radius: var(--cc-radius-sm);
   background: var(--cc-color-surface);
   color: var(--cc-color-text);
   font: inherit;
   font-size: var(--cc-font-size-base);
-  line-height: 1.5;
+  line-height: var(--cc-line-height-base);
 }
 
 .cc-form-control:focus {
@@ -30,12 +30,12 @@
   justify-content: center;
   min-height: 2.375rem;
   padding: 0.375rem 0.75rem;
-  border: 1px solid transparent;
+  border: var(--cc-border-width) solid transparent;
   border-radius: var(--cc-radius-sm);
   font: inherit;
   font-size: var(--cc-font-size-base);
   font-weight: var(--cc-font-weight-regular);
-  line-height: 1.5;
+  line-height: var(--cc-line-height-base);
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -49,22 +49,22 @@
 }
 
 .cc-button-sm {
-  min-height: calc(1.5em + 0.5rem + 2px);
-  padding: 0.25rem 0.5rem;
+  min-height: calc(1.5em + var(--cc-space-sm) + var(--cc-border-width) + var(--cc-border-width));
+  padding: var(--cc-space-xs) var(--cc-space-sm);
   font-size: var(--cc-font-size-sm);
-  line-height: 1.5;
+  line-height: var(--cc-line-height-base);
 }
 
 .cc-button-icon {
-  width: calc(1.5em + 0.75rem + 2px);
-  min-width: calc(1.5em + 0.75rem + 2px);
+  width: calc(1.5em + 0.75rem + var(--cc-border-width) + var(--cc-border-width));
+  min-width: calc(1.5em + 0.75rem + var(--cc-border-width) + var(--cc-border-width));
   padding-right: 0;
   padding-left: 0;
 }
 
 .cc-button-sm.cc-button-icon {
-  width: calc(1.5em + 0.5rem + 2px);
-  min-width: calc(1.5em + 0.5rem + 2px);
+  width: calc(1.5em + var(--cc-space-sm) + var(--cc-border-width) + var(--cc-border-width));
+  min-width: calc(1.5em + var(--cc-space-sm) + var(--cc-border-width) + var(--cc-border-width));
 }
 
 .cc-button-primary {

@@ -9,6 +9,10 @@
       :nav-links="headerNavLinks"
       :utility-links="headerUtilityLinks"
       :active-path="activePath"
+      menu-label="Menu"
+      close-label="Close"
+      navigation-heading="Navigation"
+      account-support-heading="Account &amp; Support"
       :user-can-add="true"
       edit-url="/edit"
       add-label="add">
@@ -201,7 +205,7 @@
 
 <script setup>
 import { BartocFooter, BartocHeader, BartocSearchBar } from "../src/index.js"
-import demoLogoUrl from "./assets/bartoc-logo-new.png"
+import demoLogoUrl from "./assets/bartoc-logo.svg"
 
 const demoPrintLogoUrl = svgDataUrl(`
 <svg xmlns="http://www.w3.org/2000/svg" width="250" height="72" viewBox="0 0 250 72">
@@ -315,7 +319,7 @@ function svgDataUrl(svg) {
   min-width: 0;
   padding: var(--cc-space-md);
   overflow-x: auto;
-  border: 1px solid var(--cc-border-color);
+  border: var(--cc-border-width) solid var(--cc-border-color);
   border-radius: var(--cc-radius-md);
   background: var(--cc-color-surface);
 }

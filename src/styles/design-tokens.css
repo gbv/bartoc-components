@@ -24,6 +24,8 @@
   --cc-border-color: #ddd;
   --cc-border-color-control: #ced4da;
   --cc-border-color-strong: #adb5bd;
+  --cc-border-width: 1px;
+  --cc-border-width-strong: 2px;
   --cc-font-size-base: 1rem;
   --cc-font-size-sm: 0.875rem;
   --cc-font-size-lg: 1.25rem;
@@ -31,6 +33,8 @@
   --cc-font-weight-light: 400;
   --cc-font-weight-regular: 600;
   --cc-font-weight-bold: 700;
+  --cc-line-height-base: 1.5;
+  --cc-line-height-tight: 1.2;
   --cc-space-xs: 0.25rem;
   --cc-space-sm: 0.5rem;
   --cc-space-md: 1rem;
@@ -43,6 +47,8 @@
   --cc-row-padding-y: 0.5rem;
   --cc-row-padding-x: 0.75rem;
   --cc-row-gap: 0.5rem;
+  --cc-touch-target-size: 2.75rem;
+  --cc-transition-duration-fast: 180ms;
 
   /* Shared semantic extensions currently present in bartoc-search. */
   --cc-color-danger-surface: color-mix(in srgb, var(--cc-color-danger) 10%, var(--cc-color-surface));
@@ -58,6 +64,10 @@
   --cc-header-background: var(--cc-color-primary);
   --cc-header-color: var(--cc-color-on-primary);
   --cc-header-logo-height: var(--cc-space-xxl);
+  --cc-header-mobile-logo-max-width: 50vw;
+  --cc-header-separator-opacity: 0.35;
+  --cc-header-menu-icon-offset: calc(var(--cc-space-xs) + var(--cc-border-width-strong));
+  --cc-header-panel-z-index: 10;
 
   /* Footer-specific extension. */
   --cc-footer-background: var(--cc-color-text);

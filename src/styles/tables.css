@@ -19,11 +19,11 @@
 
 .cc-table.cc-table--divided th,
 .cc-table.cc-table--divided td {
-  border-top: 1px solid var(--cc-border-color);
+  border-top: var(--cc-border-width) solid var(--cc-border-color);
 }
 
 .cc-table.cc-table--divided thead th {
-  border-bottom: 2px solid var(--cc-border-color);
+  border-bottom: var(--cc-border-width-strong) solid var(--cc-border-color);
   vertical-align: bottom;
 }
 

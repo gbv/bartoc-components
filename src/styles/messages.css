@@ -1,7 +1,7 @@
 .cc-message {
   padding: var(--cc-space-md);
   margin-bottom: var(--cc-space-md);
-  border: 1px solid var(--cc-border-color);
+  border: var(--cc-border-width) solid var(--cc-border-color);
   border-radius: var(--cc-radius-sm);
   background: var(--cc-color-surface-muted);
   color: var(--cc-color-text);

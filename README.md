@@ -80,6 +80,17 @@ Font weights follow the coli-conc scale:
 
 The helper classes `font-weight-light`, `font-weight-regular`, and `font-weight-bold` use these tokens. This means `font-weight-light` is intentionally `400` in BARTOC's shared layer, not Bootstrap's default `300`.
 
+Shared geometry and motion tokens:
+
+| Token | Default | Use |
+| --- | --- | --- |
+| `--cc-border-width` | `1px` | Component borders and fine underlines. |
+| `--cc-border-width-strong` | `2px` | Table header borders, focus outlines, and icon strokes. |
+| `--cc-line-height-base` | `1.5` | Header links and shared form controls. |
+| `--cc-line-height-tight` | `1.2` | Compact brand text line height. |
+| `--cc-touch-target-size` | `2.75rem` | Minimum height of mobile header controls. |
+| `--cc-transition-duration-fast` | `180ms` | Brief UI transitions. |
+
 Use `--cc-space-*` for page and component spacing, and `--cc-row-*` for compact repeated rows, lists, and table-like UI. Bootstrap spacing utilities can still be used for ordinary layout when they already fit.
 
 Button semantics:
@@ -104,10 +115,12 @@ Button semantics:
 `BartocHeader` provides shared BARTOC header presentation without depending on
 Bootstrap. The host application still owns login state, authorization checks,
 environment-specific edit URLs, and route/menu data.
+On mobile, it opens an overlay menu with Navigation and Account & Support
+sections. The host can translate its toggle labels and section headings.
 
 ```vue
 <BartocHeader
-  logo-url="/img/bartoc-logo-new.png"
+  logo-url="/img/bartoc-logo.svg"
   :nav-links="navLinks"
   :utility-links="utilityLinks"
   :user-can-add="userCanAdd"
@@ -248,8 +261,9 @@ npm run dev
 npm run check
 ```
 
-The development server renders the demo app from `dev/App.vue`. The production
-build emits the library files and package CSS in `dist/`.
+The development server renders the demo app from `dev/App.vue`. The demo passes
+the mobile menu labels explicitly while keeping the default English text. The
+production build emits the library files and package CSS in `dist/`.
 
 See [RELEASING.md](RELEASING.md) for the release process and
 [CHANGELOG.md](CHANGELOG.md) for breaking changes and migration notes.

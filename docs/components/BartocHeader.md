@@ -27,7 +27,7 @@ const utilityLinks = [{ href: "/contact", label: "Contact & Editors" }]
   <BartocHeader
     site-name="BARTOC.org"
     home-url="/"
-    logo-url="/img/bartoc-logo-new.png"
+    logo-url="/img/bartoc-logo.svg"
     logo-alt="BARTOC"
     :nav-links="navLinks"
     :utility-links="utilityLinks"
@@ -56,13 +56,37 @@ const utilityLinks = [{ href: "/contact", label: "Contact & Editors" }]
   Contact & Editors.
 - `activePath` string, default empty: marks a link active when it matches
   `href`.
-- `navLabel` string, default `Main navigation`.
-- `utilityNavLabel` string, default `User navigation`.
+- `navLabel` string, default `Main navigation`: accessible name of the primary nav.
+- `utilityNavLabel` string, default `User navigation`: accessible name of the
+  utility nav.
+- `menuLabel` string, default `Menu`: label for the closed mobile toggle.
+- `closeLabel` string, default `Close`: label for the open mobile toggle.
+- `navigationHeading` string, default `Navigation`: mobile primary section heading.
+- `accountSupportHeading` string, default `Account & Support`: mobile account
+  section heading.
 - `userCanAdd` boolean, default `false`: shows the Add link when true.
 - `editUrl` string, default `/edit`: href for the Add link.
 - `addLabel` string, default `Add`.
 - `printLogoUrl` string, default empty: optional print-only logo.
 - `printText` string, default BARTOC register title.
+
+The four mobile labels default to the approved English text. To translate the
+header, pass localized values alongside the navigation's accessible labels:
+
+```vue
+<BartocHeader
+  :nav-links="navLinks"
+  :utility-links="utilityLinks"
+  menu-label="Apri menu"
+  close-label="Chiudi menu"
+  navigation-heading="Navigazione"
+  account-support-heading="Account e supporto"
+  nav-label="Navigazione principale"
+  utility-nav-label="Navigazione utente"
+/>
+```
+
+The host also supplies translated link labels, `addLabel`, and user status UI.
 
 ## Link Objects
 
@@ -122,18 +146,36 @@ const navLinks = config.menu.map((item) => ({
 
 ## Styling
 
-The component is Bootstrap-free. Its default visual contract follows the
-current `bartoc.org` header: primary background, 48px logo, light navigation
-links, and bold active item.
+The component is Bootstrap-free and keeps the host-provided logo unchanged.
+Pass the original BARTOC SVG through `logoUrl` or the `logo` slot. The desktop
+header uses `--cc-header-background`, stays about 64px tall, and keeps the
+navigation on one row. The active link has a thin underline.
 
-`bartoc-search` can opt into its sticky behavior in its local CSS:
+Header measurements use the shared border, line height, touch target, and
+transition tokens listed in the README. Header-specific tokens are:
 
-```css
-.bartoc-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  margin-bottom: 0;
-  box-shadow: var(--cc-shadow-sm);
-}
-```
+| Token | Default | Use |
+| --- | --- | --- |
+| `--cc-header-background` | `--cc-color-primary` | Header background. |
+| `--cc-header-color` | `--cc-color-on-primary` | Header text and icon color. |
+| `--cc-header-logo-height` | `--cc-space-xxl` | Screen and print logo height. |
+| `--cc-header-mobile-logo-max-width` | `50vw` | Mobile logo width limit. |
+| `--cc-header-separator-opacity` | `0.35` | Desktop logo separator opacity. |
+| `--cc-header-menu-icon-offset` | `--cc-space-xs` + `--cc-border-width-strong` | Aligns the bars when they form a Close icon. |
+| `--cc-header-panel-z-index` | `10` | Mobile panel stacking level. |
+
+The `75rem` breakpoint stays in the media query because CSS custom properties
+do not work there.
+
+At viewport widths of 75rem or less, the header shows a Menu button. The
+button opens a white panel over the page without moving its content. The panel
+has Navigation and Account & Support sections by default, each shown only when
+it has content. The panel uses a brief entrance animation and respects reduced
+motion preferences. The active link uses
+`--cc-color-accent`. The same navigation and account slots are used in both
+layouts, so host-owned login/logout and authorization
+remain live. Tab reaches the panel controls; Escape closes the panel and
+returns focus to the Menu button. The button exposes `aria-expanded` and
+`aria-controls`, and active links retain `aria-current="page"`.
+
+The print-only logo and text remain separate from the screen header.

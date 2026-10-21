@@ -1,6 +1,6 @@
 .bartoc-footer {
   box-sizing: border-box;
-  border-top: 1px solid var(--cc-footer-border-color);
+  border-top: var(--cc-border-width) solid var(--cc-footer-border-color);
   background: var(--cc-footer-background);
   color: var(--cc-footer-color);
   font-size: var(--cc-font-size-base);
