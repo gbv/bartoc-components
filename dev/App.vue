@@ -15,7 +15,7 @@
       account-support-heading="Account &amp; Support"
       :user-can-add="true"
       edit-url="/edit"
-      add-label="add">
+      add-label="Add">
       <template #user-status>
         <a href="/login">Login</a>
       </template>

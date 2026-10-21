@@ -123,6 +123,32 @@
   color: inherit;
 }
 
+.bartoc-header__user-status > a:any-link,
+.bartoc-header__user-status > .user-status > a:any-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  color: inherit;
+  font-size: var(--cc-font-size-base);
+  font-weight: var(--cc-font-weight-light);
+  line-height: var(--cc-line-height-base);
+  text-decoration: none;
+}
+
+.bartoc-header__user-status > a:is(:hover, :focus-visible),
+.bartoc-header__user-status > .user-status > a:is(:hover, :focus-visible) {
+  text-decoration: underline;
+}
+
+.bartoc-header__user-status .user-status-dropdown {
+  color: var(--cc-color-text);
+}
+
+.bartoc-header__add-link:any-link {
+  color: var(--cc-color-primary);
+  text-decoration: none;
+}
+
 .bartoc-header__print {
   margin: 0;
   background: var(--cc-color-surface);
@@ -280,8 +306,26 @@
   }
 
   .bartoc-header__user-status {
+    display: block;
     min-height: var(--cc-touch-target-size);
-    padding-inline: var(--cc-space-md);
+  }
+
+  .bartoc-header__user-status > .user-status {
+    display: block;
+  }
+
+  .bartoc-header__user-status > a:any-link,
+  .bartoc-header__user-status > .user-status > a:any-link {
+    display: flex;
+    min-height: var(--cc-touch-target-size);
+    padding: var(--cc-space-sm) var(--cc-space-md);
+    border-radius: var(--cc-radius-sm);
+  }
+
+  .bartoc-header__user-status > a:is(:hover, :focus-visible),
+  .bartoc-header__user-status > .user-status > a:is(:hover, :focus-visible) {
+    background: var(--cc-color-accent);
+    text-decoration: none;
   }
 
   .bartoc-header__add-link {
@@ -298,6 +342,15 @@
     background: var(--cc-color-primary-hover);
     color: var(--cc-color-on-primary);
   }
+
+  .bartoc-header__add-link:any-link {
+    color: var(--cc-color-on-primary);
+  }
+}
+
+/* Preserve UserStatus's disconnected indication in both layouts. */
+.bartoc-header__user-status > .user-status > a.user-status-disconnected {
+  text-decoration: line-through;
 }
 
 @media (prefers-reduced-motion: reduce) {
