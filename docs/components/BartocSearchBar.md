@@ -6,6 +6,13 @@ The component owns form presentation and normalized submit events only. Host
 applications still own routing, URL construction, API calls, search limits,
 lookup URI behavior, and any project-specific query synchronization.
 
+The form fills its available width. In a wide container, the input, field
+dropdown, and red Search button share one row; the input takes the remaining
+space. In a narrow container, the input occupies the first row and the field
+and button share the second. If those controls cannot fit together, each takes
+its own row. The layout responds to the component's container width, so it also
+works inside narrower sections on desktop pages.
+
 ## Basic Usage
 
 ```vue
