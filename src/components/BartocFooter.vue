@@ -45,13 +45,13 @@ const defaultPrintText = computed(() =>
   `${props.siteName} vocabulary metadata is made available under the ${props.licenseLabel}.`,
 )
 
-const globalLinks = computed(() => [
-  ...props.internalLinks,
-  ...props.externalLinks,
-])
+const linkGroups = computed(() => [
+  { label: "Data & tools", links: props.internalLinks },
+  { label: "Information & community", links: props.externalLinks },
+].filter((group) => group.links.length))
 
 const downloadLink = computed(() =>
-  props.internalLinks.find((link) => link.label === "download"),
+  props.internalLinks.find((link) => String(link.label).toLowerCase() === "download"),
 )
 
 function linkRel(link) {
@@ -71,94 +71,37 @@ function linkKey(link) {
   <footer class="bartoc-footer">
     <div class="bartoc-footer__screen noprint">
       <div class="app-container bartoc-footer__inner">
-        <div
-          v-if="
-            searchStatus ||
-              searchStatusLinks.length ||
-              $slots['search-status'] ||
-              $slots['search-status-links']
-          "
-          class="bartoc-footer__row">
-          <p
-            v-if="searchStatus || $slots['search-status']"
-            class="bartoc-footer__search-status">
-            <slot name="search-status">
-              {{ searchStatus }}
-            </slot>
-          </p>
+        <div class="bartoc-footer__main">
+          <div class="bartoc-footer__branding">
+            <p class="bartoc-footer__brand">
+              {{ siteName }}
+            </p>
+            <p
+              v-if="$slots['site-description']"
+              class="bartoc-footer__description">
+              <slot name="site-description" />
+            </p>
+          </div>
 
           <nav
-            v-if="searchStatusLinks.length || $slots['search-status-links']"
-            class="bartoc-footer__search-status-links"
-            aria-label="Search status links">
-            <slot name="search-status-links">
-              <ul class="bartoc-footer__link-list">
-                <li
-                  v-for="link in searchStatusLinks"
-                  :key="linkKey(link)"
-                  class="bartoc-footer__link-item">
-                  <a
-                    class="bartoc-footer__link"
-                    :href="link.href"
-                    :target="link.target"
-                    :rel="linkRel(link)">
-                    {{ link.label }}
-                  </a>
-                </li>
-              </ul>
-            </slot>
-          </nav>
-        </div>
-
-        <div class="bartoc-footer__row">
-          <p class="bartoc-footer__legal">
-            <slot name="legal">
-              <span>{{ siteName }} vocabulary metadata is </span>
-              <a
-                v-if="downloadLink"
-                :href="downloadLink.href">made available</a>
-              <span v-else>made available</span>
-              <span> under the </span>
-              <a :href="licenseUrl">{{ licenseLabel }}</a>
-            </slot>
-          </p>
-        </div>
-
-        <div
-          v-if="resourceFormatLinks.length || $slots['resource-format-links']"
-          class="bartoc-footer__row">
-          <nav
-            class="bartoc-footer__resource-format-links"
-            aria-label="Resource formats">
-            <slot name="resource-format-links">
-              <ul class="bartoc-footer__link-list">
-                <li
-                  v-for="link in resourceFormatLinks"
-                  :key="linkKey(link)"
-                  class="bartoc-footer__link-item">
-                  <a
-                    class="bartoc-footer__link"
-                    :href="link.href"
-                    :target="link.target"
-                    :rel="linkRel(link)">
-                    {{ link.label }}
-                  </a>
-                </li>
-              </ul>
-            </slot>
-          </nav>
-        </div>
-
-        <div
-          v-if="globalLinks.length || $slots['global-links']"
-          class="bartoc-footer__row">
-          <nav
+            v-if="$slots['global-links']"
             class="bartoc-footer__global-links"
             aria-label="Footer">
-            <slot name="global-links">
+            <slot name="global-links" />
+          </nav>
+
+          <template v-else>
+            <nav
+              v-for="group in linkGroups"
+              :key="group.label"
+              class="bartoc-footer__global-links"
+              :aria-label="group.label">
+              <h2 class="bartoc-footer__heading">
+                {{ group.label }}
+              </h2>
               <ul class="bartoc-footer__link-list">
                 <li
-                  v-for="link in globalLinks"
+                  v-for="link in group.links"
                   :key="linkKey(link)"
                   class="bartoc-footer__link-item">
                   <a
@@ -170,9 +113,99 @@ function linkKey(link) {
                   </a>
                 </li>
               </ul>
-            </slot>
-          </nav>
+            </nav>
+          </template>
+
+          <div
+            v-if="
+              searchStatus ||
+                searchStatusLinks.length ||
+                resourceFormatLinks.length ||
+                $slots['search-status'] ||
+                $slots['search-status-links'] ||
+                $slots['resource-format-links']
+            "
+            class="bartoc-footer__context">
+            <section
+              v-if="
+                searchStatus ||
+                  searchStatusLinks.length ||
+                  $slots['search-status'] ||
+                  $slots['search-status-links']
+              "
+              class="bartoc-footer__search">
+              <h2 class="bartoc-footer__heading">
+                Search index
+              </h2>
+              <p
+                v-if="searchStatus || $slots['search-status']"
+                class="bartoc-footer__search-status">
+                <slot name="search-status">
+                  {{ searchStatus }}
+                </slot>
+              </p>
+
+              <nav
+                v-if="searchStatusLinks.length || $slots['search-status-links']"
+                class="bartoc-footer__search-status-links"
+                aria-label="Search status links">
+                <slot name="search-status-links">
+                  <ul class="bartoc-footer__link-list">
+                    <li
+                      v-for="link in searchStatusLinks"
+                      :key="linkKey(link)"
+                      class="bartoc-footer__link-item">
+                      <a
+                        class="bartoc-footer__link"
+                        :href="link.href"
+                        :target="link.target"
+                        :rel="linkRel(link)">
+                        {{ link.label }}
+                      </a>
+                    </li>
+                  </ul>
+                </slot>
+              </nav>
+            </section>
+
+            <nav
+              v-if="resourceFormatLinks.length || $slots['resource-format-links']"
+              class="bartoc-footer__resource-format-links"
+              aria-label="Resource formats">
+              <h2 class="bartoc-footer__heading">
+                Resource formats
+              </h2>
+              <slot name="resource-format-links">
+                <ul class="bartoc-footer__link-list">
+                  <li
+                    v-for="link in resourceFormatLinks"
+                    :key="linkKey(link)"
+                    class="bartoc-footer__link-item">
+                    <a
+                      class="bartoc-footer__link"
+                      :href="link.href"
+                      :target="link.target"
+                      :rel="linkRel(link)">
+                      {{ link.label }}
+                    </a>
+                  </li>
+                </ul>
+              </slot>
+            </nav>
+          </div>
         </div>
+
+        <p class="bartoc-footer__legal">
+          <slot name="legal">
+            <span>{{ siteName }} vocabulary metadata is </span>
+            <a
+              v-if="downloadLink"
+              :href="downloadLink.href">made available</a>
+            <span v-else>made available</span>
+            <span> under the </span>
+            <a :href="licenseUrl">{{ licenseLabel }}</a>
+          </slot>
+        </p>
       </div>
     </div>
 

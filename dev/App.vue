@@ -195,6 +195,9 @@
       :internal-links="footerInternalLinks"
       :resource-format-links="footerResourceFormatLinks"
       :search-status-links="footerSearchStatusLinks">
+      <template #site-description>
+        Basic Register of Thesauri, Ontologies &amp; Classifications
+      </template>
       <template #search-status>
         search in <b>123</b> terminologies
         (as of <b>2026-07-06</b>, live updates <b>enabled</b>)
@@ -226,14 +229,16 @@ const headerUtilityLinks = [{ href: "/contact", label: "Contact & Editors" }]
 const activePath = window.location.pathname
 
 const footerExternalLinks = [
+  { href: "https://www.gbv.de/impressum", label: "Imprint" },
+  { href: "https://www.gbv.de/datenschutz", label: "Privacy Policy" },
   { href: "https://code4lib.social/@bartoc", label: "Mastodon", rel: "me" },
-  { href: "https://github.com/gbv/bartoc.org", label: "sources" },
-  { href: "https://github.com/gbv/bartoc.org/issues", label: "issues" },
+  { href: "https://github.com/gbv/bartoc.org", label: "BARTOC sources" },
+  { href: "https://github.com/gbv/bartoc.org/issues", label: "Issues" },
 ]
 
 const footerInternalLinks = [
   { href: "/api", label: "API" },
-  { href: "/download", label: "download" },
+  { href: "/download", label: "Download" },
   { href: "/sparql", label: "SPARQL" },
 ]
 
@@ -254,7 +259,7 @@ const footerResourceFormatLinks = [
 
 const footerSearchStatusLinks = [
   { href: "/api/status", label: "Search API" },
-  { href: "https://github.com/gbv/bartoc-search", label: "sources" },
+  { href: "https://github.com/gbv/bartoc-search", label: "bartoc-search sources" },
 ]
 
 function svgDataUrl(svg) {

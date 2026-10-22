@@ -88,7 +88,7 @@ Shared geometry and motion tokens:
 | `--cc-border-width-strong` | `2px` | Table header borders, focus outlines, and icon strokes. |
 | `--cc-line-height-base` | `1.5` | Header links and shared form controls. |
 | `--cc-line-height-tight` | `1.2` | Compact brand text line height. |
-| `--cc-touch-target-size` | `2.75rem` | Minimum height of mobile header controls. |
+| `--cc-touch-target-size` | `2.75rem` | Minimum height of mobile header controls; minimum footer navigation dimensions on mobile and touch devices. |
 | `--cc-transition-duration-fast` | `180ms` | Brief UI transitions. |
 
 Use `--cc-space-*` for page and component spacing, and `--cc-row-*` for compact repeated rows, lists, and table-like UI. Bootstrap spacing utilities can still be used for ordinary layout when they already fit.
@@ -157,7 +157,8 @@ field contract, events, slots, and host integration notes.
 `BartocFooter` provides shared footer presentation for BARTOC metadata,
 search index status, global navigation links, resource format links, and print
 output. The host application still owns API status fetching, route decisions,
-and URL construction.
+and URL construction. Link groups appear in columns on desktop and stack on
+mobile; search status and resource formats share an optional contextual column.
 
 ```vue
 <BartocFooter

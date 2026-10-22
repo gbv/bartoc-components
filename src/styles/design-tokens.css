@@ -72,7 +72,7 @@
   /* Footer-specific extension. */
   --cc-footer-background: var(--cc-color-text);
   --cc-footer-color: var(--cc-border-color-strong);
-  --cc-footer-link-color: var(--cc-color-on-primary);
+  --cc-footer-link-color: var(--cc-footer-color);
   --cc-footer-link-hover-color: var(--cc-color-surface-muted);
   --cc-footer-border-color: var(--cc-footer-background);
   --cc-footer-separator-color: var(--cc-color-muted);
