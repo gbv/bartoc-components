@@ -182,6 +182,26 @@ Styles are scoped to component classes such as `bartoc-search-bar` and
 `bartoc-header`, so the package CSS should not reset the host application's
 global body or link styles.
 
+### Checkboxes
+
+Add `cc-checkbox` directly to a native `<input type="checkbox">` for a rounded
+control with a white surface and gray border when unchecked, and the primary
+BARTOC color with a white checkmark when checked. The class uses existing
+`--cc-*` tokens and includes visible keyboard focus and muted disabled states.
+
+```html
+<label>
+  <input class="cc-checkbox" type="checkbox" name="notifications" value="email">
+  Email notifications
+</label>
+```
+
+Use the native `checked`, `disabled`, and `required` attributes as usual. The
+JavaScript `indeterminate` property displays a dash. Labels, keyboard interaction,
+form submission, and events retain their native behavior. Label layout and
+spacing belong to the host; an associated label enlarges the clickable area.
+Printing and forced colors use the browser's native checkbox appearance.
+
 ### Messages
 
 Message utilities provide Bootstrap-independent panels for neutral information,

@@ -27,6 +27,45 @@
       </section>
 
       <section
+        class="demo-checkboxes"
+        aria-labelledby="demo-checkboxes-title">
+        <h1 id="demo-checkboxes-title">
+          Shared checkbox styles
+        </h1>
+
+        <div class="demo-checkbox-list">
+          <label>
+            <input
+              class="cc-checkbox"
+              type="checkbox">
+            Unchecked
+          </label>
+          <label>
+            <input
+              class="cc-checkbox"
+              type="checkbox"
+              checked>
+            Checked
+          </label>
+          <label>
+            <input
+              class="cc-checkbox"
+              type="checkbox"
+              disabled>
+            Disabled
+          </label>
+          <label>
+            <input
+              class="cc-checkbox"
+              type="checkbox"
+              checked
+              disabled>
+            Checked and disabled
+          </label>
+        </div>
+      </section>
+
+      <section
         class="demo-messages"
         aria-labelledby="demo-messages-title">
         <h1 id="demo-messages-title">
@@ -296,13 +335,28 @@ function svgDataUrl(svg) {
   text-align: center;
 }
 
-.demo-messages {
+.demo-messages,
+.demo-checkboxes {
   width: min(100%, 48rem);
 }
 
-.demo-messages h1 {
+.demo-messages h1,
+.demo-checkboxes h1 {
   margin-top: 0;
   text-align: center;
+}
+
+.demo-checkbox-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cc-space-md) var(--cc-space-xl);
+}
+
+.demo-checkbox-list label {
+  display: flex;
+  align-items: center;
+  min-height: var(--cc-touch-target-size);
+  gap: var(--cc-space-sm);
 }
 
 .demo-tables {

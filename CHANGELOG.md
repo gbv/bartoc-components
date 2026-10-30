@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Added
+
+- Added the reusable `cc-checkbox` class for native checkboxes, with keyboard
+  focus and disabled states ([#5](https://github.com/gbv/bartoc-components/issues/5)).
+
 ## 0.5.0 - 2026-10-22
 
 ### Added
